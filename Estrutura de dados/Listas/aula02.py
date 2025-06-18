@@ -80,3 +80,5 @@ linguagens.sort(reverse=True) # Ordem alfabética invertida
 linguagens.sort(key= lambda x : len(x) ) # Ordna pala quantidade de letras
 
 linguagens.sort(key= lambda x : len(x), reverse=True) # Ordna pala quantidade de letras invertida
+
+linguagens.insert(0,)

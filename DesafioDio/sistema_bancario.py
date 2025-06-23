@@ -3,6 +3,8 @@
 # Conta corrente - armazenar em uma lista, Aconta corrente é composta por = agência, número da conta e user
 # numero da conta é sequencial iniciando em 1. O numero da agencia é fixo 0001
 # Um user pode ter mais de uma conta, mas uma conta pertence a somente um user
+import datetime
+
 LIMITE_SAQUE = 3
 NUMERO_AGENCIA = "001"
 numero_conta = 1
@@ -12,6 +14,93 @@ extrato = []
 lista_usuarios = []
 lista_conta_corrente = []
 opcoes_menu = ["Depositar", "Sacar", "Extrato", "Criar Usuário", "Criar Conta Corrente", "Listar usuários" ,"Sair"]
+
+# Parte das classes
+class PessoaFisica:
+
+    def __init__(self, cpf: str, nome: str, data_nascimento):
+        self.cpf = cpf
+        self.nome = nome
+        self.data_nascimento = data_nascimento
+
+        @property
+        def cpf(self):
+            return self.__cpf
+        
+        # Verificar futuramente        
+        @cpf.setter
+        def cpf(self, novo_cpf: str):
+            self.__cpf = novo_cpf
+
+
+        @property
+        def data_nascimento(self):
+            return self.__data_nascimento
+
+        @data_nascimento.setter
+        def data_nascimento(self, nova_data: str):
+            try:
+               self.__data_nascimento = datetime.datetime.strptime(nova_data, "%d/%m/%Y").date()
+            except ValueError:
+                raise ValueError
+        
+        @property
+        def nome(self):
+            return self.__nome
+
+        @nome.setter
+        def nome(self, novo_nome: str):
+            nome_tratado = novo_nome.strip()
+            if len(nome_tratado.split()) >= 2 and nome_tratado.replace(" ", "").isalpha():
+                self.__nome = nome_tratado.title()
+            else:
+                raise ValueError("Nome inválido. Digite o nome completo (pelo menos duas palavras) e sem números.")
+
+class Cliente(PessoaFisica):
+    def __init__(self, cpf: str, nome: str, data_nascimento: str, *, logradouro: str, bairro: str, cidade: str, uf: str):
+        super().__init__(cpf, nome, data_nascimento)
+        self.endereco = {"Logradouro": logradouro, "Bairro": bairro, "Cidade": cidade, "UF": uf}
+        self.contas = []
+    
+    def realizar_transacao(conta: Conta, transacao: Transacao):
+        ...
+    def adicionar_conta(conta: Conta):
+        ...
+
+class Conta:
+    def __init__(self, saldo: float, numero: int, agencia: str, cliente: Cliente, historico: Historico):
+        self.saldo = saldo
+        self.numero = numero
+        self.agencia = agencia
+        self.historico = historico
+
+    def
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Funções de operções
 def exibir_menu():

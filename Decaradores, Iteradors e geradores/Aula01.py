@@ -15,6 +15,7 @@ def ola_mundo(nome):
 
 ola_mundo = meu_decorador(ola_mundo)
 ola_mundo()
+
 # Sem marcador
 def aprimorar_foto(funcao_de_foto): # 'funcao_de_foto' é a nossa 'tirar_foto' original
     # Dentro do recurso, ele cria uma NOVA forma de tirar a foto
